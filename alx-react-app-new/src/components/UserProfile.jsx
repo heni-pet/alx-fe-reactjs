@@ -2,8 +2,8 @@ const UserProfile = (props) => {
   return (
     <div style={styles.card}>
       <h1>{props.name}</h1>
-      <h2>Age: {props.age}</h2>
-      <h3>Bio: {props.bio}</h3>
+      <h2>{props.age}</h2>
+      <h3>{props.bio}</h3>
     </div>
   );
 };

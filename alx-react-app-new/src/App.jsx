@@ -4,50 +4,17 @@ import Header from './components/Header'
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
-import  { useState, useEffect } from "react";
+import ProfilePage from "./components/ProfilePage";
+import UserContext from "./UserContext";
 
 function App() {
-  const [views, setViews] = useState(0);
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
-  useEffect(() => {
-    let count = localStorage.getItem("pageViews");
-
-    if (count) {
-      count = parseInt(count) + 1;
-    } else {
-      count = 1;
-    }
-
-    localStorage.setItem("pageViews", count);
-    setViews(count);
-  }, []);
-  const resetCounter = () => {
-    localStorage.removeItem("pageViews");
-    setViews(0);
-  };
-
-  return (
-    <div>
-      <WelcomeMessage />
-      <h2>Page Views Counter</h2>
-      <p>This page has been viewed {views} times.</p>
-      <button onClick={resetCounter}>Reset Counter</button>
-      <Header />
-      <MainContent />
-      <Counter />
-      <Footer />
-      <UserProfile 
-        name="Alice" 
-        age="25" 
-        bio="Loves hiking and photography" />
-        <UserProfile 
-        name="John" 
-        age="28" 
-        bio="Learning React at ALX and enjoys coding!" />
-
-    </div>
+return (
+  <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
   );
 }
-
 
 export default App;
