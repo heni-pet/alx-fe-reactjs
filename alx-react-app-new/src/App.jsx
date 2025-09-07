@@ -3,6 +3,7 @@ import UserProfile from './components/UserProfile';
 import Header from './components/Header'
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import Counter from './components/Counter';
 import  { useState, useEffect } from "react";
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
       <button onClick={resetCounter}>Reset Counter</button>
       <Header />
       <MainContent />
-       <Footer />
+      <Counter />
+      <Footer />
       <UserProfile 
         name="Alice" 
         age="25" 
