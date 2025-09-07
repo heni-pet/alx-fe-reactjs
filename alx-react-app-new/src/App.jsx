@@ -3,13 +3,37 @@ import UserProfile from './components/UserProfile';
 import Header from './components/Header'
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import  { useState, useEffect } from "react";
+
 function App() {
+  const [views, setViews] = useState(0);
+
+  useEffect(() => {
+    let count = localStorage.getItem("pageViews");
+
+    if (count) {
+      count = parseInt(count) + 1;
+    } else {
+      count = 1;
+    }
+
+    localStorage.setItem("pageViews", count);
+    setViews(count);
+  }, []);
+  const resetCounter = () => {
+    localStorage.removeItem("pageViews");
+    setViews(0);
+  };
+
   return (
     <div>
       <WelcomeMessage />
+      <h2>Page Views Counter</h2>
+      <p>This page has been viewed {views} times.</p>
+      <button onClick={resetCounter}>Reset Counter</button>
       <Header />
       <MainContent />
-      <Footer />
+       <Footer />
       <UserProfile 
         name="Alice" 
         age="25" 
@@ -22,5 +46,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
