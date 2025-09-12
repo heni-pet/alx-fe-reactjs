@@ -6,26 +6,18 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
 import  { useState, useEffect } from "react";
-
+import React from 'react';
 function App() {
   const [views, setViews] = useState(0);
+  const resetCounter = () => setViews(0);
 
   useEffect(() => {
-    let count = localStorage.getItem("pageViews");
-
-    if (count) {
-      count = parseInt(count) + 1;
-    } else {
-      count = 1;
-    }
-
-    localStorage.setItem("pageViews", count);
-    setViews(count);
+    const incrementViews = () => setViews((prev) => prev + 1);
+    window.addEventListener("load", incrementViews);
+    return () => {
+      window.removeEventListener("load", incrementViews);
+    };
   }, []);
-  const resetCounter = () => {
-    localStorage.removeItem("pageViews");
-    setViews(0);
-  };
 
   return (
     <div>
@@ -45,10 +37,9 @@ function App() {
         name="John" 
         age="28" 
         bio="Learning React at ALX and enjoys coding!" />
+        </div>
 
-    </div>
   );
 }
-
 
 export default App;

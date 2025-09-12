@@ -1,5 +1,5 @@
 {
-  "name": "alx-react-app",
+  "name": "recipe-sharing-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,6 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.2",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
