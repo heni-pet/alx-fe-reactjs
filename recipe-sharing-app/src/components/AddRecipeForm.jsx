@@ -6,8 +6,8 @@ export default function AddRecipeForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     if (!title.trim()) return;
     addRecipe({ id: Date.now(), title, description });
     setTitle('');
