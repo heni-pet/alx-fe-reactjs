@@ -1,5 +1,5 @@
 
-import { useRecipeStore } from './recipeStore';
+import { useRecipeStore } from './RecipeStore';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
 const RecipeDetails = ({ recipeId }) => {

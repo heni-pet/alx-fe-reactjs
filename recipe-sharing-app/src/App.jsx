@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from './components/SearchBar';
 import AddRecipeForm from './Components/AddRecipeForm'
 import RecipeList from './Components/RecipeList'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,6 +11,7 @@ function App() {
     <Router>
       <div>
         <h1>Recipe Sharing App</h1>
+        <SearchBar />
         <AddRecipeForm />
         <Routes>
           <Route path="/" element={<RecipeList />} />

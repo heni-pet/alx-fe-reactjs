@@ -1,19 +1,19 @@
 // RecipeList component
-  import { useRecipeStore } from './recipeStore';
+  import { useRecipeStore } from './RecipeStore';
 
   const RecipeList = () => {
     const recipes = useRecipeStore(state => state.recipes);
+     const filtered = useRecipeStore((state) => state.filteredRecipes);
 
-    return (
-      <div>
-        {recipes.map(recipe => (
-          <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-          </div>
-        ))}
-      </div>
-    );
-  };
+  if (!filtered.length) return <p>No recipes match your search.</p>;
 
-  export default RecipeList;
+
+   return (
+    <ul>
+      {filtered.map((recipe) => (
+        <li key={recipe.id}>{recipe.title}</li>
+      ))}
+    </ul>
+  );
+}
+export default RecipeList;
