@@ -9,11 +9,15 @@
 
 
    return (
-    <ul>
-      {filtered.map((recipe) => (
-        <li key={recipe.id}>{recipe.title}</li>
-      ))}
-    </ul>
+    <div>
+        {recipes.map(recipe => (
+          <div key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+          </div>
+        ))}
+      </div>
+    
   );
 }
 export default RecipeList;

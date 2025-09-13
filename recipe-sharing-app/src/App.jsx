@@ -1,10 +1,11 @@
 import React from 'react'
-import SearchBar from './components/SearchBar';
-import AddRecipeForm from './Components/AddRecipeForm'
-import RecipeList from './Components/RecipeList'
+import AddRecipeForm from './components/AddRecipeForm'
+import RecipeList from './components/RecipeList'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import RecipeDetails from './components/RecipeDetails';
+import DeleteRecipeButton from './components/DeleteRecipeButton';
+import EditRecipeForm from './components/EditRecipeForm';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
