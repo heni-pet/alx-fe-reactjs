@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-
+import { shallow } from 'zustand/shallow'
 export const useRecipeStore = create((set) => ({
   recipes: [],
   recommendations: [],
