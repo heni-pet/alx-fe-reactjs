@@ -15,8 +15,7 @@ export default function Search() {
     setUser(null);
     try {
       const data = await fetchUserData(username.trim());
-      console.log("Fetched data:", data);
-      setUser(data);
+      setUser([data]); // wrap single user in array
     } catch (err) {
       console.error("Error fetching user data:", err);
       setError(true);
@@ -45,35 +44,39 @@ export default function Search() {
       {loading && <p className="text-gray-500">Loading...</p>}
       {error && <p className="text-red-500">Looks like we can't find the user</p>}
 
-      {user && (
-        <div className="border border-gray-200 rounded p-4 shadow-sm space-y-2">
-          <div className="flex items-center gap-4">
-            <img
-              src={user.avatar_url}
-              alt="avatar"
-              className="w-20 h-20 rounded-full"
-            />
-            <div>
-              <p className="font-bold text-lg">{user.name || user.login}</p>
-              <p className="text-gray-600">{user.login}</p>
-            </div>
-          </div>
-          <p>Followers: {user.followers}</p>
-          <p>Following: {user.following}</p>
-          <p>Public Repos: {user.public_repos}</p>
-          {user.location && <p>Location: {user.location}</p>}
-          {user.bio && <p>Bio: {user.bio}</p>}
-          <p>Public Gists: {user.public_gists}</p>
-          <a
-            href={user.html_url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-500 hover:underline"
+      {user &&
+        user.map((u) => (
+          <div
+            key={u.id}
+            className="border border-gray-200 rounded p-4 shadow-sm space-y-2"
           >
-            GitHub Profile
-          </a>
-        </div>
-      )}
+            <div className="flex items-center gap-4">
+              <img
+                src={u.avatar_url}
+                alt="avatar"
+                className="w-20 h-20 rounded-full"
+              />
+              <div>
+                <p className="font-bold text-lg">{u.name || u.login}</p>
+                <p className="text-gray-600">{u.login}</p>
+              </div>
+            </div>
+            <p>Followers: {u.followers}</p>
+            <p>Following: {u.following}</p>
+            <p>Public Repos: {u.public_repos}</p>
+            {u.location && <p>Location: {u.location}</p>}
+            {u.bio && <p>Bio: {u.bio}</p>}
+            <p>Public Gists: {u.public_gists}</p>
+            <a
+              href={u.html_url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              GitHub Profile
+            </a>
+          </div>
+        ))}
     </div>
   );
 }
