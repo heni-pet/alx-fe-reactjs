@@ -41,6 +41,12 @@ export default function Search() {
         <div>
           <img src={user.avatar_url} alt="avatar" width="80" />
           <p>{user.name || user.login}</p>
+          <p>Followers: {user.followers}</p>
+          <p>Following: {user.following}</p>
+          <p>Public Repos: {user.public_repos}</p>
+          <p>Location: {user.location}</p>
+          <p>Bio: {user.bio}</p>
+          <p>Public Gists: {user.public_gists}</p>
           <a href={user.html_url} target="_blank" rel="noreferrer">
             GitHub Profile
           </a>
