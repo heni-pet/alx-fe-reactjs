@@ -62,6 +62,7 @@ export default function Search() {
               </div>
             </div>
             <p>Followers: {u.followers}</p>
+            <p>Posts: {u.public_repos}</p>
             <p>Following: {u.following}</p>
             <p>Public Repos: {u.public_repos}</p>
             {u.location && <p>Location: {u.location}</p>}
