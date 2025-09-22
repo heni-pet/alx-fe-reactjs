@@ -1,32 +1,14 @@
-import { Routes, BrowserRouter,Route, Link } from 'react-router-dom';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetails';
-import SearchBar from './components/SearchBar';
-import RecommendationsList from './components/RecommendationsList';
-import FavoritesList from './components/FavoritesList';
-import ErrorBoundary from './components/ErrorBoundary';
+import RecipeList from './components/RecipeList'
+import AddRecipeForm from './components/AddRecipeForm'
 
-export default function App() {
+function App() {
   return (
-    <main>
+    <div>
       <h1>Recipe Sharing App</h1>
-      <SearchBar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ErrorBoundary>
-              <AddRecipeForm />
-              <RecipeList />
-              <RecommendationsList />
-              <FavoritesList />
-            </ErrorBoundary>
-          }
-        />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
-      </Routes>
-    </main>
-  );
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
+  )
 }
 
+export default App
