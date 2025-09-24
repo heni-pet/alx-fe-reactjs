@@ -22,9 +22,7 @@ export default function Search() {
     }
     setLoading(false);
   }
-  {error && (
-  <p>Looks like we cant find the user</p>
-)}
+ 
 
 
   return (
