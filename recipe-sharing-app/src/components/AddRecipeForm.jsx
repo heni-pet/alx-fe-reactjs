@@ -1,18 +1,24 @@
-import { useState } from 'react'
-import { useRecipeStore } from './recipeStore';
+import { useState } from 'react';
+import useRecipeStore from './recipeStore';
 
-const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore((state) => state.addRecipe)
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+export default function AddRecipeForm() {
+  const addRecipe = useRecipeStore((state) => state.addRecipe);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!title || !description) return
-    addRecipe({ id: Date.now(), title, description })
-    setTitle('')
-    setDescription('')
-  }
+    e.preventDefault();
+    if (!title.trim() || !description.trim()) return;
+
+    addRecipe({
+      id: Date.now().toString(),
+      title,
+      description,
+    });
+
+    setTitle('');
+    setDescription('');
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -29,7 +35,5 @@ const AddRecipeForm = () => {
       />
       <button type="submit">Add Recipe</button>
     </form>
-  )
+  );
 }
-
-export default AddRecipeForm

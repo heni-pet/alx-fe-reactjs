@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { fetchUserData } from "../services/githubService";
-
 export default function Search() {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
@@ -23,9 +22,7 @@ export default function Search() {
     setLoading(false);
   }
  
-
-
-  return (
+return (
     <div className="max-w-lg mx-auto mt-10 p-4">
       <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
         <input

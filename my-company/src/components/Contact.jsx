@@ -14,13 +14,13 @@ function Contact() {
     setSubmitted(true);
     alert('Form submitted! (demo)'); 
     // Optionally reset:
-    // setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', message: '' });
   };
 
-  const inputStyle = { display: 'block', width: '100%', maxWidth: '500px', margin: '8px 0', padding: '10px', borderRadius: '6px', border: '1px solid #ccc' };
+  const inputStyle = { display: 'block', width: '100%', maxWidth: '500px', margin: '8px 0', padding: '10px', borderRadius: '6px', border: '1px solid #ccccccff' };
 
   return (
-    <div style={{ padding: '40px', textAlign: 'center' }}>
+    <div style={{ padding: '40px', flexDirection: 'column', display: 'flex', alignItems: 'center' }}>
       <h1>Contact Us</h1>
 
       {submitted ? (
