@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react"
-import recipesData from "../data.json"
+import { Link } from "react-router-dom"
 
 export default function HomePage() {
   const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
-    setRecipes(recipesData)
+    fetch("/data.json")
+      .then(res => res.json())
+      .then(data => setRecipes(data))
+      
   }, [])
 
   return (
     <main className="p-6 bg-gray-50 min-h-screen">
-      <div className="grid gap-6 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {recipes.map(recipe => (
           <div
             key={recipe.id}
@@ -24,12 +27,12 @@ export default function HomePage() {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600 mb-4">{recipe.summary}</p>
-              <a
-                href={`/recipes/${recipe.id}`}
+              <Link
+                to={`/recipes/${recipe.id}`}
                 className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
               >
                 View Recipe
-              </a>
+              </Link>
             </div>
           </div>
         ))}
