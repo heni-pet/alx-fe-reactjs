@@ -39,8 +39,8 @@ export default function AddRecipeForm() {
 
   return (
     <div className="flex justify-center mt-10">
-      <div className="w-full max-w-lg p-8 bg-white rounded-3xl shadow-xl">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Add New Recipe</h2>
+      <div className="md:w-full max-w-lg p-8 bg-white rounded-3xl shadow-xl">
+        <h2 className="md:text-3xl font-bold text-center text-gray-800 mb-8">Add New Recipe</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
 
           <div>
@@ -48,7 +48,7 @@ export default function AddRecipeForm() {
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50"
+              className="md:w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50"
               placeholder="Recipe Title"
             />
             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
@@ -58,7 +58,7 @@ export default function AddRecipeForm() {
             <textarea
               value={ingredients}
               onChange={e => setIngredients(e.target.value)}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 h-28 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-gray-50 resize-none"
+              className="md:w-full border border-gray-300 rounded-xl px-4 py-3 h-28 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-gray-50 resize-none"
               placeholder="Ingredients (comma-separated)"
             />
             {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
@@ -68,7 +68,7 @@ export default function AddRecipeForm() {
             <textarea
               value={steps}
               onChange={e => setSteps(e.target.value)}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 h-36 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-gray-50 resize-none"
+              className="md:w-full border border-gray-300 rounded-xl px-4 py-3 h-36 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-gray-50 resize-none"
               placeholder="Steps (one per line)"
             />
             {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
@@ -76,7 +76,7 @@ export default function AddRecipeForm() {
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold text-lg shadow-lg hover:from-blue-600 hover:to-indigo-600 transition-all"
+            className="md:w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold text-lg shadow-lg hover:from-blue-600 hover:to-indigo-600 transition-all"
           >
             Submit Recipe
           </button>
