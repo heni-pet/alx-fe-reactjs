@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import {useRecipes}  from './RecipeContext';
+import React, {useState,useEffect} from "react";
+import data from '../data.json'
 
 export default function HomePage() {
   const { recipes } = useRecipes()
