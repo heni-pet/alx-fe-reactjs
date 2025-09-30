@@ -4,24 +4,27 @@ export default function AddRecipeForm() {
   const [title, setTitle] = useState("")
   const [ingredients, setIngredients] = useState("")
   const [steps, setSteps] = useState("")
+  const [errors, setErrors] = useState({})  // track errors
+
+  const validate = () => {
+    const newErrors = {}
+    if (!title.trim()) newErrors.title = "Title is required"
+    if (!ingredients.trim()) newErrors.ingredients = "Ingredients are required"
+    else if (ingredients.split(",").map(i => i.trim()).length < 2)
+      newErrors.ingredients = "At least 2 ingredients required"
+    if (!steps.trim()) newErrors.steps = "Steps are required"
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
-
-    if (!title.trim() || !ingredients.trim() || !steps.trim()) {
-      alert("All fields are required")
-      return
-    }
-
-    const ingredientList = ingredients.split(",").map(i => i.trim())
-    if (ingredientList.length < 2) {
-      alert("Please enter at least 2 ingredients")
-      return
-    }
+    if (!validate()) return
 
     const recipe = {
       title,
-      ingredients: ingredientList,
+      ingredients: ingredients.split(",").map(i => i.trim()),
       steps: steps.split("\n").map(s => s.trim()).filter(s => s),
     }
 
@@ -31,6 +34,7 @@ export default function AddRecipeForm() {
     setTitle("")
     setIngredients("")
     setSteps("")
+    setErrors({})
   }
 
   return (
@@ -39,41 +43,35 @@ export default function AddRecipeForm() {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Add New Recipe</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
 
-          <div className="relative">
+          <div>
             <input
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50"
-              placeholder=" "
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent bg-gray-50"
+              placeholder="Recipe Title"
             />
-            <label className="absolute left-4 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-600 peer-focus:text-sm">
-              Recipe Title
-            </label>
+            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
           </div>
 
-          <div className="relative">
+          <div>
             <textarea
               value={ingredients}
               onChange={e => setIngredients(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-6 pb-2 h-28 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-gray-50 resize-none"
-              placeholder=" "
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 h-28 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-gray-50 resize-none"
+              placeholder="Ingredients (comma-separated)"
             />
-            <label className="absolute left-4 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-600 peer-focus:text-sm">
-              Ingredients (comma-separated)
-            </label>
+            {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
           </div>
 
-          <div className="relative">
+          <div>
             <textarea
               value={steps}
               onChange={e => setSteps(e.target.value)}
-              className="peer w-full border border-gray-300 rounded-xl px-4 pt-6 pb-2 h-36 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-gray-50 resize-none"
-              placeholder=" "
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 h-36 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-gray-50 resize-none"
+              placeholder="Steps (one per line)"
             />
-            <label className="absolute left-4 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-gray-600 peer-focus:text-sm">
-              Steps (one per line)
-            </label>
+            {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
           </div>
 
           <button
