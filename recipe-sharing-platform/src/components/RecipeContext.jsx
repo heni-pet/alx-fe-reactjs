@@ -11,7 +11,7 @@ export function RecipeProvider({ children }) {
         "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
       image: "https://via.placeholder.com/150",
       ingredients: ["Spaghetti", "Eggs", "Cheese", "Bacon", "Black Pepper"],
-      steps: "Boil pasta, cook bacon, mix eggs & cheese, combine everything."
+      instructions: "Boil pasta, cook bacon, mix eggs & cheese, combine everything."
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export function RecipeProvider({ children }) {
         "Chunks of grilled chicken cooked in a creamy tomato-based gravy.",
       image: "https://via.placeholder.com/150",
       ingredients: ["Chicken", "Tomatoes", "Cream", "Spices"],
-      steps: "Grill chicken, cook tomato sauce, add cream, mix chicken in sauce."
+      instructions: "Grill chicken, cook tomato sauce, add cream, mix chicken in sauce."
     }
   ])
 
