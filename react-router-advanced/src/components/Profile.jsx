@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter,Router,Route,Link, Outlet } from "react-router-dom";
+import { BrowserRouter,Router,Routes,Link, Outlet } from "react-router-dom";
 import ProfileDetails from "./ProfileDetails";
 import ProfileSettings from "./ProfileSettings";
 
