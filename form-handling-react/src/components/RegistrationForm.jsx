@@ -4,27 +4,27 @@ export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username ) {
-      setError("All fields are required.");
+    if (!username) {
+      setErrors("Username is required.");
       return;
     }
 
-    if (!email.includes("@")) {
-      setError("Please enter a valid email.");
+    if (!email) {
+      setErrors("Email is required.");
       return;
     }
 
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
+    if (!password) {
+      setErrors("Password is required.");
       return;
     }
 
-    setError("");
+    setErrors("");
     console.log("Form submitted:", { username, email, password });
 
     setUsername("");
@@ -41,8 +41,8 @@ export default function RegistrationForm() {
         User Registration
       </h2>
 
-      {error && (
-        <p className="text-red-500 text-sm mb-3 text-center">{error}</p>
+      {errors && (
+        <p className="text-red-500 text-sm mb-3 text-center">{errors}</p>
       )}
 
       <div className="mb-3">
