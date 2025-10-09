@@ -1,6 +1,15 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
+// Define fetchPosts function as required
+const fetchPosts = async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  if (!response.ok) {
+    throw new Error("Network response failed");
+  }
+  return response.json();
+};
+
 export default function PostsComponent() {
   const {
     data,
@@ -10,11 +19,7 @@ export default function PostsComponent() {
     refetch
   } = useQuery({
     queryKey: ["posts"],
-    queryFn: async () => {
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-      if (!response.ok) throw new Error("Network response failed");
-      return response.json();
-    },
+    queryFn: fetchPosts,
   });
 
   if (isLoading) {
