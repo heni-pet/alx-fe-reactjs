@@ -8,8 +8,8 @@ export default function Profile() {
       <ul>
         <BrowserRouter>
           <Route>
-            <li><Link to="details">Profile Details</Link></li>
-            <li><Link to="settings">Profile Settings</Link></li>
+            <Route path="details" element={<Link to="details">Profile Details</Link>} />
+            <Route path="settings" element={<Link to="settings">Profile Settings</Link>} />
           </Route>
         </BrowserRouter>
       </ul>
