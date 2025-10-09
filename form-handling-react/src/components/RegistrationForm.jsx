@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function RegistrationForm() {
-  // Step 1: Define state for each input
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -10,17 +9,14 @@ export default function RegistrationForm() {
 
   const [error, setError] = useState("");
 
-  // Step 2: Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Step 3: Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!formData.username || !formData.email || !formData.password) {
       setError("All fields are required.");
       return;
@@ -29,7 +25,6 @@ export default function RegistrationForm() {
     setError("");
     console.log("Form submitted:", formData);
 
-    // Reset form
     setFormData({
       username: "",
       email: "",
