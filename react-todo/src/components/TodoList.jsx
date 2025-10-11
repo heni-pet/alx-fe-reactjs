@@ -5,33 +5,35 @@ import ToggleTodo from "./ToggleTodo";
 
 export default function TodoList() {
   const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a Todo App", completed: false },
-    { id: 3, text: "Write Tests", completed: false },
+    { text: "Learn React", completed: false },
+    { text: "Build a Todo App", completed: false },
+    { text: "Write Tests", completed: false },
   ]);
 
   const addTodo = (text) => {
     if (!text.trim()) return;
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, { text, completed: false }]);
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const toggleTodo = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    setTodos(updatedTodos);
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
     <div>
-      <AddTodoForm onAdd={addTodo} />
+      <h2>Todo List</h2>
+      <AddTodoForm addTodo={addTodo} />
+
+      <h3>Toggle Todos</h3>
       <ToggleTodo todos={todos} onToggle={toggleTodo} />
+
+      <h3>Delete Todos</h3>
       <DeleteTodo todos={todos} onDelete={deleteTodo} />
     </div>
   );
