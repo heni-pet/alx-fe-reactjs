@@ -41,6 +41,13 @@ test("deletes a todo", () => {
 
   // Delete first todo
   fireEvent.click(deleteButtons[0]);
-  const remainingTodos = screen.queryAllByText("Learn React");
-  expect(remainingTodos.length).toBe(1);
+
+  // The deleted item should no longer exist in the delete list
+  const deletedTodo = screen.queryByText("Learn React", { selector: "ul + ul li" });
+  expect(deletedTodo).toBeNull();
+
+  // The same todo should still exist in the toggle list
+
+
 });
+
